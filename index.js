@@ -4,6 +4,7 @@ const path = require("path");
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
+const htmlRenderer = require('./lib/htmlRenderer.js')
 
 const teamMembers = [];
 
@@ -91,7 +92,7 @@ const chooseTeam = () => {
             case "Intern":
                 internPrompt();
                 break;
-            default: console.log(teamMembers);
+            default: createHTML();
         }
     })
 }
@@ -148,7 +149,7 @@ const engineerPrompt = () => {
             }
         }
     ]).then(answers => {
-        const engineer = new Engineer(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOfficeNum);
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamMembers.push(engineer);
         chooseTeam()
     })
@@ -212,14 +213,10 @@ const internPrompt = () => {
     })
 }
 
+const createHTML = () => {
+    fs.writeFileSync("./outputTeam.html", htmlRenderer(teamMembers), "utf-8")
+
+}
 
 
 
-// function init() {
-//     // console.log("Hola, mundo!")
-//     inquirer.prompt(questions).then(responses => {
-//         console.log(responses);
-//     });
-// };
-
-// init();
