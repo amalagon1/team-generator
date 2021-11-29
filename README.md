@@ -17,6 +17,10 @@ Start the application in the terminal with node index.js, then answer the series
 
 
 
+https://user-images.githubusercontent.com/89949832/143803635-ef7688db-b865-4c04-87eb-610d00b22db8.mov
+
+
+
 
 
 
